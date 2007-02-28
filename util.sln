@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auComCtl", "auComCtl\auComCtl.csproj", "{A2C59D80-44E8-46B4-8CB7-5E9E2843CA26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auIO", "auIO\auIO.csproj", "{BDEE9434-E0B5-4762-93B0-BAF56CD84A01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2C59D80-44E8-46B4-8CB7-5E9E2843CA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C59D80-44E8-46B4-8CB7-5E9E2843CA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C59D80-44E8-46B4-8CB7-5E9E2843CA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C59D80-44E8-46B4-8CB7-5E9E2843CA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDEE9434-E0B5-4762-93B0-BAF56CD84A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEE9434-E0B5-4762-93B0-BAF56CD84A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEE9434-E0B5-4762-93B0-BAF56CD84A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEE9434-E0B5-4762-93B0-BAF56CD84A01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
