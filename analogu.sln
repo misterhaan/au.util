@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comctl", "comctl\comctl.csproj", "{C3D9C4FD-F836-49A9-AD16-26FFBCF7BA69}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "io", "io\io.csproj", "{74F3B2A9-62DB-4496-B847-3CD823D21F1D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{C3D9C4FD-F836-49A9-AD16-26FFBCF7BA69}.Debug.ActiveCfg = Debug|.NET
+		{C3D9C4FD-F836-49A9-AD16-26FFBCF7BA69}.Debug.Build.0 = Debug|.NET
+		{C3D9C4FD-F836-49A9-AD16-26FFBCF7BA69}.Release.ActiveCfg = Release|.NET
+		{C3D9C4FD-F836-49A9-AD16-26FFBCF7BA69}.Release.Build.0 = Release|.NET
+		{74F3B2A9-62DB-4496-B847-3CD823D21F1D}.Debug.ActiveCfg = Debug|.NET
+		{74F3B2A9-62DB-4496-B847-3CD823D21F1D}.Debug.Build.0 = Debug|.NET
+		{74F3B2A9-62DB-4496-B847-3CD823D21F1D}.Release.ActiveCfg = Release|.NET
+		{74F3B2A9-62DB-4496-B847-3CD823D21F1D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		installer\aulib.wxs = installer\aulib.wxs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
