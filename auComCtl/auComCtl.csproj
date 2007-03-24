@@ -58,6 +58,8 @@
     <Compile Include="FoldernameBox.Designer.cs">
       <DependentUpon>FoldernameBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewItemSorter.cs" />
+    <Compile Include="ListViewUtil.cs" />
     <Compile Include="NumberBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,13 +78,12 @@
     <Compile Include="SimpleCalcForm.Designer.cs">
       <DependentUpon>SimpleCalcForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SortType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="auComCtl.snk" />

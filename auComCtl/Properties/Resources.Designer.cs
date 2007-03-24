@@ -89,6 +89,15 @@ namespace au.util.comctl.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only ListView controls in details view can be sorted using this method..
+        /// </summary>
+        internal static string DetailsViewRequiredMessage {
+            get {
+                return ResourceManager.GetString("DetailsViewRequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File Selection.
         /// </summary>
         internal static string FilenameBoxMessageBoxCaption {
