@@ -8,39 +8,51 @@ namespace au.util.comctl {
   /// </summary>
   public class ListViewItemSorter : IComparer {
     #region Data Members
-    private int _column;
+    private int _sortColumn;
+    private int _indicatorColumn;
     private bool _reverse;
     private SortType _sort;
     #endregion  // Data Members
 
     #region Constructors
-    public ListViewItemSorter() : this(0, false, SortType.String) { }
-    public ListViewItemSorter(int sortColumn) : this(sortColumn, false, SortType.String) { }
-    public ListViewItemSorter(bool reverseOrder) : this(0, reverseOrder, SortType.String) { }
-    public ListViewItemSorter(SortType sort) : this(0, false, sort) { }
-    public ListViewItemSorter(int sortColumn, bool reverseOrder) : this(sortColumn, reverseOrder, SortType.String) { }
-    public ListViewItemSorter(int sortColumn, SortType sort) : this(sortColumn, false, sort) { }
-    public ListViewItemSorter(bool reverseOrder, SortType sort) : this(0, reverseOrder, sort) { }
     /// <summary>
     /// Creates a new ListViewItemSorter to sort list view items
     /// </summary>
     /// <param name="sortColumn">Index of the column to sort</param>
+    /// <param name="indicatorColumn">Index of the column to show sort indicators on</param>
     /// <param name="reverseOrder">True if the column should be sorted in reverse order</param>
     /// <param name="sortType">How to sort the data</param>
-    public ListViewItemSorter(int sortColumn, bool reverseOrder, SortType sort) {
-      _column = sortColumn;
+    public ListViewItemSorter(int sortColumn, int indicatorColumn, bool reverseOrder, SortType sort) {
+      _sortColumn = sortColumn;
+      _indicatorColumn = indicatorColumn;
       _reverse = reverseOrder;
       _sort = sort;
     }
+    public ListViewItemSorter(int sortColumn, bool reverseOrder, SortType sort) : this(sortColumn, sortColumn, reverseOrder, sort) { }
+    public ListViewItemSorter(int sortColumn, int indicatorColumn, bool reverseOrder) : this(sortColumn, indicatorColumn, reverseOrder, SortType.String) { }
+    public ListViewItemSorter(int sortColumn, bool reverseOrder) : this(sortColumn, sortColumn, reverseOrder, SortType.String) { }
+    public ListViewItemSorter(int sortColumn, int indicatorColumn, SortType sort) : this(sortColumn, indicatorColumn, false, sort) { }
+    public ListViewItemSorter(int sortColumn, SortType sort) : this(sortColumn, sortColumn, false, sort) { }
+    public ListViewItemSorter(int sortColumn, int indicatorColumn) : this(sortColumn, indicatorColumn, false, SortType.String) { }
+    public ListViewItemSorter(int sortColumn) : this(sortColumn, sortColumn, false, SortType.String) { }
+    public ListViewItemSorter() : this(0, 0, false, SortType.String) { }
     #endregion  // Constructors
 
     #region Properties
     /// <summary>
     /// Gets or sets the index of the column used to sort the list
     /// </summary>
-    public int Column {
-      get { return _column; }
-      set { _column = value; }
+    public int SortColumn {
+      get { return _sortColumn; }
+      set { _sortColumn = value; }
+    }
+
+    /// <summary>
+    /// Gets or sets the index of the column that will show a sort indicator
+    /// </summary>
+    public int IndicatorColumn {
+      get { return _indicatorColumn; }
+      set { _indicatorColumn = value; }
     }
 
     /// <summary>
@@ -85,12 +97,12 @@ namespace au.util.comctl {
       int result = 0;
       switch(_sort) {
         case SortType.CaseSensitiveString:
-          result = x.SubItems[_column].Text.CompareTo(y.SubItems[_column].Text);
+          result = x.SubItems[_sortColumn].Text.CompareTo(y.SubItems[_sortColumn].Text);
           break;
         case SortType.Number:
           try {
-            double numX = double.Parse(x.SubItems[_column].Text);
-            double numY = double.Parse(y.SubItems[_column].Text);
+            double numX = double.Parse(x.SubItems[_sortColumn].Text);
+            double numY = double.Parse(y.SubItems[_sortColumn].Text);
             if(numX < numY)
               result = -1;
             else if(numX > numY)
@@ -99,14 +111,14 @@ namespace au.util.comctl {
           break;
         case SortType.Date:
           try {
-            DateTime dtX = DateTime.Parse(x.SubItems[_column].Text);
-            DateTime dtY = DateTime.Parse(y.SubItems[_column].Text);
+            DateTime dtX = DateTime.Parse(x.SubItems[_sortColumn].Text);
+            DateTime dtY = DateTime.Parse(y.SubItems[_sortColumn].Text);
             result = dtX.CompareTo(dtY);
           } catch { }
           break;
         case SortType.String:
         default:
-          result = x.SubItems[_column].Text.ToLower().CompareTo(y.SubItems[_column].Text.ToLower());
+          result = x.SubItems[_sortColumn].Text.ToLower().CompareTo(y.SubItems[_sortColumn].Text.ToLower());
           break;
       }
       if(_reverse)

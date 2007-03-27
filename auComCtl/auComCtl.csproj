@@ -123,4 +123,12 @@
     <None Include="Properties\Resources\calc-large.png" />
     <EmbeddedResource Include="Properties\Resources\calc.png" />
   </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>@echo off
+if not "$(ConfigurationName)" == "Release" goto SkipGAC
+echo Adding $(TargetPath) to Global Assembly Cache...
+"$(DevEnvDir)..\..\SDK\v2.0\Bin\gacutil.exe" /nologo /if "$(TargetPath)"
+:SkipGAC
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
