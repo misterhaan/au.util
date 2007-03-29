@@ -53,6 +53,216 @@ namespace au.util.comctl {
 
     #region DetailSort
     /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, int indicatorColumnIndex, SortType sort, bool reverse) {
+      if(list.View != View.Details)
+        throw new ArgumentException(Properties.Resources.DetailsViewRequiredMessage, "list");
+      ListViewItemSorter sorter = list.ListViewItemSorter as ListViewItemSorter;
+      if(sorter == null) {
+        sorter = new ListViewItemSorter(sortColumnIndex, sort);
+        list.ListViewItemSorter = sorter;
+      } else {
+        if(sorter.IndicatorColumn != indicatorColumnIndex)
+          HideSortIndicator(list, sorter.IndicatorColumn);
+      }
+      sorter.IndicatorColumn = indicatorColumnIndex;
+      sorter.SortColumn = sortColumnIndex;
+      sorter.ReverseOrder = reverse;
+      ShowSortIndicator(list, indicatorColumnIndex, reverse);
+      list.Sort();
+    }
+    #region other DetailSortInitial options
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex, SortType sort, bool reverse) { DetailSortInitial(list, sortColumn.Index, indicatorColumnIndex, sort, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn, SortType sort, bool reverse) { DetailSortInitial(list, sortColumnIndex, indicatorColumn.Index, sort, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn, SortType sort, bool reverse) { DetailSortInitial(list, sortColumn.Index, indicatorColumn.Index, sort, reverse); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, int indicatorColumnIndex, SortType sort) { DetailSortInitial(list, sortColumnIndex, indicatorColumnIndex, sort, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex, SortType sort) { DetailSortInitial(list, sortColumn.Index, indicatorColumnIndex, sort, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn, SortType sort) { DetailSortInitial(list, sortColumnIndex, indicatorColumn.Index, sort, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn, SortType sort) { DetailSortInitial(list, sortColumn.Index, indicatorColumn.Index, sort, false); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, int indicatorColumnIndex, bool reverse) { DetailSortInitial(list, sortColumnIndex, indicatorColumnIndex, SortType.String, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex, bool reverse) { DetailSortInitial(list, sortColumn.Index, indicatorColumnIndex, SortType.String, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn, bool reverse) { DetailSortInitial(list, sortColumnIndex, indicatorColumn.Index, SortType.String, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn, bool reverse) { DetailSortInitial(list, sortColumn.Index, indicatorColumn.Index, SortType.String, reverse); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, int indicatorColumnIndex) { DetailSortInitial(list, sortColumnIndex, indicatorColumnIndex, SortType.String, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex) { DetailSortInitial(list, sortColumn.Index, indicatorColumnIndex, SortType.String, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn) { DetailSortInitial(list, sortColumnIndex, indicatorColumn.Index, SortType.String, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn) { DetailSortInitial(list, sortColumn.Index, indicatorColumn.Index, SortType.String, false); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, SortType sort, bool reverse) { DetailSortInitial(list, sortColumnIndex, sortColumnIndex, sort, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, SortType sort, bool reverse) { DetailSortInitial(list, sortColumn.Index, sortColumn.Index, sort, reverse); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, SortType sort) { DetailSortInitial(list, sortColumnIndex, sortColumnIndex, sort, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, SortType sort) { DetailSortInitial(list, sortColumn.Index, sortColumn.Index, sort, false); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex, bool reverse) { DetailSortInitial(list, sortColumnIndex, sortColumnIndex, SortType.String, reverse); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="reverse">True if list should be sorted in reverse order</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn, bool reverse) { DetailSortInitial(list, sortColumn.Index, sortColumn.Index, SortType.String, reverse); }
+
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    public static void DetailSortInitial(ListView list, int sortColumnIndex) { DetailSortInitial(list, sortColumnIndex, sortColumnIndex, SortType.String, false); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns, for the first time
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    public static void DetailSortInitial(ListView list, ColumnHeader sortColumn) { DetailSortInitial(list, sortColumn.Index, sortColumn.Index, SortType.String, false); }
+    #endregion  // other DetailSortInitial options
+
+    /// <summary>
     /// Sorts the items in a ListView in detail view by one of the columns
     /// </summary>
     /// <param name="list">ListView being sorted</param>
@@ -70,25 +280,97 @@ namespace au.util.comctl {
         if(sorter.SortColumn == sortColumnIndex)
           sorter.ReverseOrder = !sorter.ReverseOrder;
         else {
-          HideSortIndicator(list, sorter.IndicatorColumn);
           sorter.SortColumn = sortColumnIndex;
           sorter.ReverseOrder = false;
+          if(sorter.IndicatorColumn != indicatorColumnIndex) {
+            HideSortIndicator(list, sorter.IndicatorColumn);
+            sorter.IndicatorColumn = indicatorColumnIndex;
+          }
         }
       }
       ShowSortIndicator(list, indicatorColumnIndex, sorter.ReverseOrder);
       list.Sort();
     }
+    #region other DetailSort options
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn, SortType sort) { DetailSort(list, sortColumn.Index, indicatorColumn.Index, sort); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex, SortType sort) { DetailSort(list, sortColumn.Index, indicatorColumnIndex, sort); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
+    /// <param name="sort">How to sort the data in the column</param>
     public static void DetailSort(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn, SortType sort) { DetailSort(list, sortColumnIndex, indicatorColumn.Index, sort); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn, SortType sort) { DetailSort(list, sortColumn.Index, sortColumn.Index, sort); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="sort">How to sort the data in the column</param>
     public static void DetailSort(ListView list, int sortColumnIndex, SortType sort) { DetailSort(list, sortColumnIndex, sortColumnIndex, sort); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn, ColumnHeader indicatorColumn) { DetailSort(list, sortColumn.Index, indicatorColumn.Index, SortType.String); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn, int indicatorColumnIndex) { DetailSort(list, sortColumn.Index, indicatorColumnIndex, SortType.String); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumn">Column to show sort indicator on</param>
     public static void DetailSort(ListView list, int sortColumnIndex, ColumnHeader indicatorColumn) { DetailSort(list, sortColumnIndex, indicatorColumn.Index, SortType.String); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
+    /// <param name="indicatorColumnIndex">Column to show sort indicator on</param>
     public static void DetailSort(ListView list, int sortColumnIndex, int indicatorColumnIndex) { DetailSort(list, sortColumnIndex, indicatorColumnIndex, SortType.String); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumn">Column to sort by</param>
     public static void DetailSort(ListView list, ColumnHeader sortColumn) { DetailSort(list, sortColumn.Index, sortColumn.Index, SortType.String); }
+    /// <summary>
+    /// Sorts the items in a ListView in detail view by one of the columns
+    /// </summary>
+    /// <param name="list">ListView being sorted</param>
+    /// <param name="sortColumnIndex">Column to sort by</param>
     public static void DetailSort(ListView list, int sortColumnIndex) { DetailSort(list, sortColumnIndex, sortColumnIndex, SortType.String); }
+    #endregion  // other DetailSort options
 
     /// <summary>
     /// Shows a sort indicator (generally a triangle pointing up or down) on the column header
