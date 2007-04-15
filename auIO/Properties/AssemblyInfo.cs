@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("the analog underground")]
 [assembly: AssemblyProduct("input/output library")]
-[assembly: AssemblyCopyright("© 2006 the analog underground")]
+[assembly: AssemblyCopyright("© 2006 - 2007 the analog underground")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
