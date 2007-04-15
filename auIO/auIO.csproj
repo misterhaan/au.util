@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>au.util.io</RootNamespace>
-    <AssemblyName>auIO</AssemblyName>
+    <AssemblyName>au.util.io</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>auio.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

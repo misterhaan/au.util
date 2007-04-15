@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>au.util.comctl</RootNamespace>
-    <AssemblyName>auComCtl</AssemblyName>
+    <AssemblyName>au.util.comctl</AssemblyName>
     <StartupObject>
     </StartupObject>
     <SignAssembly>true</SignAssembly>
