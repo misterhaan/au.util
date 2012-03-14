@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("the analog underground")]
 [assembly: AssemblyProduct("common controls")]
-[assembly: AssemblyCopyright("© 2006 - 2007the analog underground")]
+[assembly: AssemblyCopyright("© 2006 - 2012 the analog underground")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,6 +30,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("3.1.0.0")]
-[assembly: AssemblyFileVersion("3.1.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

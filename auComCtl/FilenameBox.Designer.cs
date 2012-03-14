@@ -45,6 +45,7 @@ namespace au.util.comctl
       // _btnBrowse
       // 
       resources.ApplyResources(this._btnBrowse, "_btnBrowse");
+      this._btnBrowse.FlatAppearance.BorderSize = 0;
       this._btnBrowse.Image = global::au.util.comctl.Properties.Resources.browseFile;
       this._btnBrowse.Name = "_btnBrowse";
       this._tooltip.SetToolTip(this._btnBrowse, resources.GetString("_btnBrowse.ToolTip"));

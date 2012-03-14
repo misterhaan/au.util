@@ -6,14 +6,13 @@ namespace au.util.io
 	/// <summary>
 	/// Static class which provides functions for working with XML
 	/// </summary>
-	public class XmlUtil {
-		#region Methods
+	public static class XmlUtil {
 		/// <summary>
 		/// Encode a string to work with HTML or XML.
 		/// </summary>
 		/// <param name="s">String to encode</param>
 		/// <returns>Encoded string</returns>
-		public static string XMLEncode(string s) {
+		public static string XmlEncode(this string s) {
 			return s.Replace("&", "&amp;").Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("  ", "&nbsp; ");
 		}
 		
@@ -24,7 +23,7 @@ namespace au.util.io
 		/// <param name="name">Name of new element</param>
 		/// <param name="innerText">Text to add with new element</param>
 		/// <returns>New element</returns>
-		public static XmlElement AddElement(XmlNode parent, string name, object innerText) {
+		public static XmlElement AddElement(this XmlNode parent, string name, object innerText) {
 			return AddElement(parent, name, innerText.ToString());
 		}
 
@@ -35,7 +34,7 @@ namespace au.util.io
 		/// <param name="name">Name of new element</param>
 		/// <param name="innerText">Text to add with new element</param>
 		/// <returns>New element</returns>
-		public static XmlElement AddElement(XmlNode parent, string name, string innerText) {
+		public static XmlElement AddElement(this XmlNode parent, string name, string innerText) {
 		  XmlElement e = parent.OwnerDocument.CreateElement(name);
 			if(innerText != null)
 				e.InnerText = innerText;
@@ -49,7 +48,7 @@ namespace au.util.io
 		/// <param name="parent">Node to add new element under</param>
 		/// <param name="name">Name of new element</param>
 		/// <returns>New element</returns>
-		public static XmlElement AddElement(XmlNode parent, string name) {
+		public static XmlElement AddElement(this XmlNode parent, string name) {
 			return AddElement(parent, name, null);
 		}
 
@@ -60,7 +59,7 @@ namespace au.util.io
 		/// <param name="name">Name of attribute to add</param>
 		/// <param name="val">Value of attribute to add</param>
 		/// <returns>New attribute</returns>
-		public static XmlAttribute AddAttribute(XmlElement el, string name, object val) {
+		public static XmlAttribute AddAttribute(this XmlElement el, string name, object val) {
 			return AddAttribute(el, name, val.ToString());
 		}
 
@@ -71,12 +70,11 @@ namespace au.util.io
 		/// <param name="name">Name of attribute to add</param>
 		/// <param name="val">Value of attribute to add</param>
 		/// <returns>New attribute</returns>
-		public static XmlAttribute AddAttribute(XmlElement el, string name, string val) {
+		public static XmlAttribute AddAttribute(this XmlElement el, string name, string val) {
 			XmlAttribute a = el.OwnerDocument.CreateAttribute(name);
 			a.Value = val;
 			el.Attributes.Append(a);
 			return a;
 		}
-		#endregion  // Methods
 	}
 }

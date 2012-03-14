@@ -20,6 +20,11 @@ namespace au.util.comctl {
     /// <summary>
     /// Date/time sort
     /// </summary>
-    Date
+    Date,
+    /// <summary>
+    /// Case-insensitive title string sort (ignores leading the/a/an)
+    /// </summary>
+    Title
+
   }
 }
