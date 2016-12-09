@@ -11,11 +11,10 @@ if exist "%pf%\Microsoft SDKs\Windows\v8.1" set sdk=%pf%\Microsoft SDKs\Windows\
 if exist "%pf%\Microsoft SDKs\Windows\v8.1A" set sdk=%pf%\Microsoft SDKs\Windows\v8.1A\Bin
 if exist "%pf%\Microsoft SDKs\Windows\v10.0A" set sdk=%pf%\Microsoft SDKs\Windows\v10.0A\Bin
 
+if exist "%sdk%\NETFX 4.6.1 Tools" set sdk=%sdk%\NETFX 4.6.1 Tools
 if exist "%sdk%\NETFX 4.6 Tools" set sdk=%sdk%\NETFX 4.6 Tools
 if exist "%sdk%\NETFX 4.5.1 Tools" set sdk=%sdk%\NETFX 4.5.1 Tools
 if exist "%sdk%\NETFX 4.0 Tools" set sdk=%sdk%\NETFX 4.0 Tools
 if exist "%sdk%\x64" set sdk=%sdk%\x64
 if defined sdk "%sdk%\gacutil.exe" /nologo /f /il %~dp0gac-list.txt
 pause
-
-C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\x64

@@ -1,12 +1,10 @@
-using System;
 using System.Xml;
 
-namespace au.util.io
-{
-	/// <summary>
-	/// Static class which provides functions for working with XML
-	/// </summary>
-	public static class XmlUtil {
+namespace au.util.io {
+  /// <summary>
+  /// Static class which provides functions for working with XML
+  /// </summary>
+  public static class XmlUtil {
 		/// <summary>
 		/// Encode a string to work with HTML or XML.
 		/// </summary>
@@ -76,5 +74,31 @@ namespace au.util.io
 			el.Attributes.Append(a);
 			return a;
 		}
-	}
+
+    /// <summary>
+    /// Gets the trimmed content of an XML element.
+    /// </summary>
+    /// <param name="element">Base element</param>
+    /// <param name="elementName">Name of subelement to read value from (multiple subelements can be used separated by forward slash)</param>
+    /// <returns>Trimmed content of an XML element</returns>
+    public static string ElementValue(this XmlElement element, string elementName) {
+      return ElementValue(element, elementName, null);
+    }
+    /// <summary>
+    /// Gets the trimmed content of an XML element.
+    /// </summary>
+    /// <param name="element">Base element</param>
+    /// <param name="elementName">Name of subelement to read value from (multiple subelements can be used separated by forward slash)</param>
+    /// <param name="defaultValue">Returned if the element does not exist or is empty</param>
+    /// <returns>Trimmed content of an XML element</returns>
+    public static string ElementValue(this XmlElement element, string elementName, string defaultValue) {
+      XmlElement e = element;
+      foreach(string name in elementName.Split('/')) {
+        e = e[name];
+        if(e == null || !e.HasChildNodes)
+          return defaultValue;
+      }
+      return e.FirstChild.Value.Trim();
+    }
+  }
 }

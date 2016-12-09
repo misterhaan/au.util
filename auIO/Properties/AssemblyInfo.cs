@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("the analog underground")]
 [assembly: AssemblyProduct("input/output library")]
-[assembly: AssemblyCopyright("© 2006 - 2012 the analog underground")]
+[assembly: AssemblyCopyright("© 2006 - 2016 the analog underground")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +32,6 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
+[assembly: AssemblyVersion("4.1.0.0")]
+[assembly: AssemblyFileVersion("4.1.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

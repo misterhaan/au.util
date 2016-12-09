@@ -57,6 +57,12 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="CaptionedPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CaptionedPictureBox.Designer.cs">
+      <DependentUpon>CaptionedPictureBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions.cs" />
     <Compile Include="FilenameBox.cs">
       <SubType>UserControl</SubType>
@@ -94,13 +100,18 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="auComCtl.snk" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CaptionedPictureBox.resx">
+      <DependentUpon>CaptionedPictureBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FilenameBox.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FilenameBox.cs</DependentUpon>
